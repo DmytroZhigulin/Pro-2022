@@ -30,7 +30,7 @@ do {
     arrElement = parseInt(prompt(`Введите чиловой элемент`));
 
     if(!arrElement) {
-        alert('Вы должны ввести числовое ачение');
+        alert('Вы должны ввести числовое значение');
     } else {
         userArr.push(arrElement);
     }
