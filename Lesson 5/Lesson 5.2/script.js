@@ -1,13 +1,8 @@
 // Три товара с категории vegetables:
 let vegetables = ['cabbage', {price: 8}, 'avocado', {price: 30}, 'tomato', {price: 10}];
-console.log(vegetables[0]);
-console.log(vegetables[1].price);
-
 
 // Три товара с категории fruits:
 let fruits = ['grapes', {price: 20}, 'raspberry', {price: 25}, 'coconut', {price: 50}];
-console.log(fruits[2]);
-console.log(fruits[3].price);
 
 // Задача: в зависимости от выбранного пользователем периода (winter или summer), категории (vegetables или fruits), товара с выбранной категории (vegetables: cabbage, avocado, tomato или fruits: grapes, raspberry, coconut), и количества единиц выбранного товара – посчитать финальную стоимость покупки и вывести всю информацию о выбранном товаре в html.
 // Порядок действий:
