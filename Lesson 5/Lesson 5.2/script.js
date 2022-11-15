@@ -1,32 +1,22 @@
 // Три товара с категории vegetables:
-
-// cabbage = 8;
-
-// avocado = 30;
-
-// tomato = 10;
-
+let vegetables = ['cabbage', {price: 8}, 'avocado', {price: 30}, 'tomato', {price: 10}];
+console.log(vegetables[0]);
+console.log(vegetables[1].price);
 
 
 // Три товара с категории fruits:
-
-// grapes = 20;
-
-// raspberry = 25;
-
-// coconut = 50;
-
-
+let fruits = ['grapes', {price: 20}, 'raspberry', {price: 25}, 'coconut', {price: 50}];
+console.log(fruits[2]);
+console.log(fruits[3].price);
 
 // Задача: в зависимости от выбранного пользователем периода (winter или summer), категории (vegetables или fruits), товара с выбранной категории (vegetables: cabbage, avocado, tomato или fruits: grapes, raspberry, coconut), и количества единиц выбранного товара – посчитать финальную стоимость покупки и вывести всю информацию о выбранном товаре в html.
-
-
-
 // Порядок действий:
 
 // Запрашиваем у пользователя период, в которой он совершает покупку: winter или summer.
 // Если пользователь вводит winter, то финальное значение стоимости покупки будет умножаться на 2
+let winterCoefficient = 2;
 // Если пользователь вводит summer, то финальное значение стоимости покупки будет умножаться на 0.8
+let sumerCoefficient = 0.8;
 // Важно: 
 // Продолжаем запрашивать у пользователя название периода до тех пор, пока не будет введено слово ‘winter’ либо ‘summer’.
 // Введенное пользователем значение может быть в любом регистре и с любым количеством пробелов до/внутри слова. 
