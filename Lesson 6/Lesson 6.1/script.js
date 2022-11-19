@@ -18,3 +18,24 @@ rainbow.splice(3, 0, "Gave", "Battle"); //['Richard', 'Of', 'York', 'Gave', 'Bat
 rainbow[rainbow.length - 1] = 'Vain'; //['Richard', 'Of', 'York', 'Gave', 'Battle', 'In', 'Vain']
 
 // 4. Вывести элементы полученного массива в html в виде, который представлен в прикрепленном рисунке rainbow.png.
+let colours = ['red', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'darkviolet'];
+let finalPrint = [];
+
+if ( rainbow.length === colours.length) {
+
+    for( i = 0; i < rainbow.length; i++) {
+
+        finalPrint.push(`
+                <div class="wrap-circle">
+                    <div class="circle" style="background-color:${colours[i]}"></div>
+                    <p>${rainbow[i]}</p>
+                </div>
+            `);
+    }
+}
+
+document.write(`
+    <div class="container">
+        ${finalPrint.join(" ")}
+    </div>
+    `);
