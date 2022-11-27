@@ -7,12 +7,14 @@
 // sum(20) = 28
 
 
-let counter = 0;
-function sum(argument) {
-    counter += argument;
-    console.log(counter);
-    return counter;  
-}    
+function loopNum() {
+    let count = 0;
+    return function(total) {
+        count += total;
+        console.log(count);
+    };
+}
+const sum = loopNum();
 sum(3);
 sum(5);
 sum(20);
