@@ -13,17 +13,17 @@
 
 function main (a = 2, b = 3, c) { 
     
-    let summary = sum(a, b);
+    let summary = sum(a, b); // Записываем результат функции в переменную;
   
-    return typeof c === 'function' ? c(summary) : summary;
+    return typeof c === 'function' ? c(summary) : summary; //Проверка с на функцию и вывод результата
 
 }
 
 
-function sum (a, b) { 
+function sum (a, b) { // Возвращается если с не функция
     return a + b; 
 }
-function sum2 (value) { 
+function sum2 (value) { //функция для передачи в аргумент c
     return value + 100; 
 }
 console.log(main(4, 4, sum2));
