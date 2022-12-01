@@ -12,9 +12,18 @@
 // Функция main должна возвращать результат функции аргумента c, если он есть, либо результат функции sum.
 
 function main (a = 2, b = 3, c) { 
+    
+    let summary = sum(a, b);
   
+    return typeof c === 'function' ? c(summary) : summary;
+
 }
+
 
 function sum (a, b) { 
     return a + b; 
 }
+function sum2 (value) { 
+    return value + 100; 
+}
+console.log(main(4, 4, sum2));
