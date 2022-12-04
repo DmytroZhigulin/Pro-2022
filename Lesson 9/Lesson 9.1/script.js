@@ -9,24 +9,3 @@
 // Знайти добуток позитивних елементів.
 // Знайти найбільший серед елементів масиву, ост альні обнулити.
 
-let numArr = [16,-37,54,-4,72,-56,47,4, -16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47];
-
-//Позитивные элементы
-let positiveElements = numArr.filter(function(num) {
-    return num > 0;
-});
-console.log(positiveElements);
-console.log(positiveElements.length);
-
-//Негативные элементы
-let negativeElements = numArr.filter(function(num) {
-    return num < 0;
-});
-console.log(negativeElements);
-console.log(negativeElements.length);
-
-//Сумма позитивных элементов
-let equalPositiveElements = positiveElements.filter(function(num) {
-    
-});
-console.log(equalPositiveElements);
