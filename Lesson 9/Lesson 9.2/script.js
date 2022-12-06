@@ -29,6 +29,9 @@ const taskBoard = tasks
         task[1] /= 60;
         return task;
     })
+   .filter(function(task) {
+        return task[1] !== 2
+   })
     .map(function(task) {
         task.push(task[1] * amount);
         return task;
