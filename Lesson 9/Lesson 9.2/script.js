@@ -15,11 +15,54 @@ let monday = [
   ['Write a tutorial',180],
   ['Some web development',120]
 ];
+
+const mondayTasks = monday
+    .filter(function(task) {
+        task[1] /= 60;
+        return task;
+    })
+    .map(function(task) {
+        task.push(task[1] * amount);
+        return task;
+    })
+    .map(function(item) {
+        return `<tr>
+                    <td>Task name:${item[0]}</td>
+                    <td>Taks duration: ${item[1]} hours</td>
+                    <td>Task amount: $${item[2]}</td>
+                </tr>
+                `
+    })
+    .join('');
+
+document.write(`<table>${mondayTasks}</table>`);
+
 let tuesday = [
   ['Keep writing that tutorial',240],
   ['Some more web development',360],
    ['A whole lot of nothing',240]
 ];
+
+const tuesdayTasks = tuesday
+    .filter(function(task) {
+        task[1] /= 60;
+        return task;
+    })
+    .map(function(task) {
+        task.push(task[1] * amount);
+        return task;
+    })
+    .map(function(item) {
+        return `<tr>
+                    <td>Task name:${item[0]}</td>
+                    <td>Taks duration: ${item[1]} hours</td>
+                    <td>Task amount: $${item[2]}</td>
+                </tr>
+                `
+    })
+    .join('');
+
+document.write(`<table>${tuesdayTasks}</table>`);
 
 
 
