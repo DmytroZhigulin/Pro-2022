@@ -19,12 +19,13 @@ let positiveDigits = digitArr
     .filter(function(digit) {
         return digit > 0;
     })
-console.log(positiveDigits);
-console.log(`Кількість позитивних елементів массиву = ${positiveDigits.length}`);
+//console.log(positiveDigits);
+
 // Кількість
 positiveDigits.forEach(function(digit) {
     sum += digit;
 })
+console.log(`Кількість позитивних елементів массиву = ${positiveDigits.length}`);
 console.log(`Сума позитивних елементів массиву = ${sum}`);
 
 
