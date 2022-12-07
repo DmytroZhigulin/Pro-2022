@@ -25,7 +25,7 @@ let tuesday = [
 let tasks = monday.concat(tuesday);
 
 const taskBoard = tasks
-    .filter(function(task) {
+    .map(function(task) {
         task[1] /= 60;
         return task;
     })
