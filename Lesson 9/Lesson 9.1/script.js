@@ -20,7 +20,7 @@ let total = 1;
 let positiveDigits = digitArr
     .filter(function(digit) {
         return digit > 0;
-    })
+    });
 console.log(`Кількість позитивних елементів массиву = ${positiveDigits.length}`);
 
 // Сума
@@ -63,26 +63,3 @@ const duplicates = positiveDigits.filter((number, index) => {
     return positiveDigits.indexOf(number) !== index;
     });
     console.log(duplicates);
-
-
-// Знайти максимальний елемент масиву та його порядковий номер.
-// Знайти мінімальний елемент масиву та його порядковий номер.
-let maxNumber = (a, b) => {
-    return a > b ? a : b;
-};
-let minNumber = (a, b) => {
-        return a < b ? a : b
-    };
-let maxIn = digitArr.indexOf(digitArr.reduce(maxNumber));
-let minIn = digitArr.indexOf(digitArr.reduce(minNumber));
-
-console.log(`Максимальний елемент масиву ${digitArr.reduce(maxNumber)}, а його індекс ${maxIn}`);// Макс
-console.log(`Мінімальний елемент масиву ${digitArr.reduce(minNumber)}, а його індекс ${minIn}`);// Мін
-
-// Визначити кількість негативних елементів.
-let negativeDigits = digitArr
-    .filter(function(digit) {
-        return digit < 0;
-    })
-// console.log(negativeDigits);
-console.log(`Кількість негативних елементів массиву = ${negativeDigits.length}`);
