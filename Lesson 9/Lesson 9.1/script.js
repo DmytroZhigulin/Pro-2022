@@ -46,5 +46,5 @@ let negativeDigits = digitArr
     .filter(function(digit) {
         return digit < 0;
     })
-console.log(negativeDigits);
+//console.log(negativeDigits);
 console.log(`Кількість негативних елементів массиву = ${negativeDigits.length}`);
