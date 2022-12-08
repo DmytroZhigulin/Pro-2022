@@ -23,10 +23,7 @@ let obj4 = {
 };
 
 
-
-let newObj = {};
-
-function assignObjects(obj1, obj2) {
+let assignObjects = function (obj1, obj2) {
 
     for ( let key in obj1) {
         newObj[key] = obj1[key];
@@ -36,5 +33,5 @@ function assignObjects(obj1, obj2) {
     } 
     
 }
-assignObjects(obj1, obj4);
+let newObj = assignObjects(obj1, obj4);
 console.log(newObj);
