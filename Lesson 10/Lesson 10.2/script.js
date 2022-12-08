@@ -22,6 +22,19 @@ let obj4 = {
     y: 30 
 };
 
+
+
+let newObj = {};
+
 function assignObjects(obj1, obj2) {
-    console.log(1);
+
+    for ( let key in obj1) {
+        newObj[key] = obj1[key];
+    } 
+    for ( let key in obj2) {
+        newObj[key] = obj2[key];
+    } 
+    
 }
+assignObjects(obj1, obj4);
+console.log(newObj);
