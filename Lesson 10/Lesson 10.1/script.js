@@ -24,11 +24,9 @@ const obj = {
 }; 
 
 
+let convert = function(object) {
 
-let newObj = {};
-
-function convert(object) {
-
+    let emptyObj = {};
     for ( let key in object) {
         
 
@@ -37,14 +35,14 @@ function convert(object) {
             let clone = object[key]
             for ( let key in clone) {
 
-                newObj[key] = clone[key];
+                emptyObj[key] = clone[key];
         
             } 
         } else {
-            newObj[key] = object[key];
+            emptyObj[key] = object[key];
         }
     } 
-    return newObj;
-}
-convert(obj);
+    return emptyObj;
+};
+let newObj = convert(obj);
 console.log(newObj);
