@@ -25,13 +25,14 @@ let obj4 = {
 
 let assignObjects = function (obj1, obj2) {
 
+    let pairObject = {};
     for ( let key in obj1) {
-        newObj[key] = obj1[key];
+        pairObject[key] = obj1[key];
     } 
     for ( let key in obj2) {
-        newObj[key] = obj2[key];
+        pairObject[key] = obj2[key];
     } 
-    
+    return pairObject;
 }
-let newObj = assignObjects(obj1, obj4);
+let newObj = assignObjects(obj4, obj1);
 console.log(newObj);
