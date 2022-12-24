@@ -84,3 +84,38 @@ Product.prototype.render = function() {
                 <td>${this.price} USD</td>
                 </tr>`;
 }
+
+
+
+// Все заданные продукты создаем с помощью функции-конструктор Product и для всех вызываем метод render().
+let product = function(category, productArr) {
+    let productRow = productArr
+        .map(function (product) {
+            return new Product(category, product.type, product.price);
+        })
+        .map(function (product) {
+            return product.render();
+        })
+        .join('');
+		
+    return productRow;	
+}
+
+
+// В результате необходимо отрендерить на странице таблицу с выводом данных о всех продуктах.
+document.write(`
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${product('kitchen', kitchenProducts)}
+            ${product('devices', devicesProducts)}
+            ${product('cosmetics', cosmeticsProducts)}
+        </tbody>
+    </table>
+`);
