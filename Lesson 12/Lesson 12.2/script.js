@@ -91,7 +91,13 @@ Product.prototype.render = function() {
 let product = function(category, productArr) {
     let productRow = productArr
         .map(function (product) {
-            return new Product(category, product.type, product.price);
+			if(typeof(product.price) === 'object') {
+				product.price = `${product.price[0]} - ${product.price[1]}`
+				return new Product(category, product.type, product.price);
+			} else {
+				return new Product(category, product.type, product.price);
+			}
+            
         })
         .map(function (product) {
             return product.render();
