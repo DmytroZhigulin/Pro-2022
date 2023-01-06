@@ -1,7 +1,7 @@
 const roles = {
-	admin: "https://www.flaticon.com/svg/static/icons/svg/1424/1424453.svg",
-	student: "https://www.flaticon.com/svg/static/icons/svg/1424/1424424.svg",
-	lector: "https://www.flaticon.com/svg/static/icons/svg/1424/1424450.svg"
+	admin: "img/admin.png",
+	student: "img/student.png",
+	lector: "img/lector.png"
 };
 
 const gradation = {
@@ -15,7 +15,7 @@ const users = [
 	{
 		name: "Jack Smith",
 		age: 23,
-		img: "https://www.flaticon.com/svg/static/icons/svg/2922/2922522.svg",
+		img: "img/user.png",
 		role: "student",
 		courses: [
 			{
@@ -24,20 +24,28 @@ const users = [
 			},
 			{
 				"title": "Java Enterprise",
-				"mark": 100
+				"mark": 85
+			},
+			{
+				"title": "React",
+				"mark": 50
+			},
+			{
+				"title": "Java Elementary",
+				"mark": 90
 			}
 		]
 	},
 	{
 		name: "Amal Smith",
 		age: 20,
-		img: "https://www.flaticon.com/svg/static/icons/svg/2922/2922656.svg",
+		img: "img/user.png",
 		role: "student"
 	},
 	{
 		name: "Noah Smith",
 		age: 43,
-		img: "https://www.flaticon.com/svg/static/icons/svg/2922/2922616.svg",
+		img: "img/user.png",
 		role: "student",
 		courses: [
 			{
@@ -49,7 +57,7 @@ const users = [
 	{
 		name: "Charlie Smith",
 		age: 18,
-		img: "https://www.flaticon.com/svg/static/icons/svg/2922/2922688.svg",
+		img: "img/user.png",
 		role: "student",
 		courses: [
 			{
@@ -64,7 +72,7 @@ const users = [
 	{
 		name: "Emily Smith",
 		age: 30,
-		img: "https://www.flaticon.com/svg/static/icons/svg/2922/2922565.svg",
+		img: "img/user.png",
 		role: "admin",
 		courses: [
 			{
@@ -86,18 +94,18 @@ const users = [
 	{
 		name: "Leo Smith",
 		age: 253,
-		img: "https://www.flaticon.com/svg/static/icons/svg/2922/2922719.svg",
+		img: "img/user.png",
 		role: "lector",
 		courses: [
 			{
 				"title": "Front-end Pro",
-				"score": 78,
+				"score": 20,
 				"studentsScore": 79
 			},
 			{
 				"title": "Java Enterprise",
 				"score": 85,
-				"studentsScore": 85
+				"studentsScore": 20
 			}
 		]
 	}
@@ -116,8 +124,6 @@ const users = [
 
 // Что нужно сделать: отрендерить для каждого юзера с массива users соответствующего вида блок.
 
-
-
 // Для каждого юзера в блоке выводим:
 
 // Картинку юзера – свойство img
@@ -128,13 +134,135 @@ const users = [
 
 // Если у юзера свойство courses есть, то выводим перечень пройденных курсов.
 
-
-
 // Делаем основной класс User, в котором будет созданы метод render и renderCourses.
+class User {
+	constructor(arg) {
+		this.name = arg.name;
+		this.age = arg.age;
+		this.img = arg.img;
+		this.role = arg.role;
+		this.courses = arg.courses;
+	}
+
+	render() {
+		return `
+			<div class="user">
+				<div class="user__info">
+					<div class="user__info--data">
+						<img src=${this.img} alt=${this.name} height="50">
+						<div class="user__naming">
+							<p>Name: <b>${this.name}</b></p>
+							<p>Age: <b>${this.age}</b></p>
+						</div>
+					</div>
+					<div class="user__info--role student">
+						<img src="img/${this.role}.png" alt="${this.role}" height="25">
+						<p>${this.role}</p>
+					</div>
+				</div>
+				${this.courses ? this.renderCourses() : ''}
+			</div>`;
+
+	}
+
+	renderCourses() {
+		let userCourses = [];
+		this.courses.forEach((course) => {
+			userCourses.push(`
+				<p class="user__courses--course ${this.role}">
+					${course.title} <span class="${userMark(course.mark, gradation)}">${upFirst(userMark(course.mark, gradation))}</span>
+				</p>`)
+			})
+		return `<div class="user__courses">${userCourses.join('')}</div>`
+		
+	}
+}
+
+// Выводим оценку текстом на основе цифрового значения
+let userMark = (mark, markList) => {
+	let finalMark;
+	for (key in markList) {
+		if (mark <= key) {
+			finalMark = markList[key];
+			return finalMark;
+		}
+	}
+};
+
+// делаем первую букву оценки заглавной
+let upFirst = (finalMark) => {
+	if (!finalMark) return finalMark;
+  
+	return finalMark[0].toUpperCase() + finalMark.slice(1);
+  }
+
+  
+  
+
 
 // Для каждой роли делаем свой класс Student, Lector, Admin, который наследует класс User.
-
 // В классах Lector, Admin переопределяем метод renderCourses для того, что бы в нужном виде отобразить список курсов.
+class Student extends User{
+	constructor(arg) {
+		super(arg);
+	};
+}
+
+class Lector extends User{
+	constructor(arg) {
+		super(arg);
+	};
+
+	renderCourses() {
+		let lectorCourses = [];
+		this.courses.forEach((course) => {
+			lectorCourses.push(`
+				<div class="user__courses--course ${this.role}">
+                    <p>Title: <b>${course.title}</b></p>
+                    <p>Lector's score: <span class="${userMark(course.score, gradation)}">${upFirst(userMark(course.score, gradation))}</span></p>
+                    <p>Average student's score: <span class="${userMark(course.studentsScore, gradation)}">${upFirst(userMark(course.studentsScore, gradation))}</span></p>
+                </div>
+				`)
+			})
+		return `<div class="user__courses admin--info">${lectorCourses.join('')}</div>`
+	}
+}
+
+class Admin extends User{
+	constructor(arg) {
+		super(arg);
+	};
+
+	renderCourses() {
+		let adminCourses = [];
+		this.courses.forEach((course) => {
+			adminCourses.push(`
+				<div class="user__courses--course ${this.role}">
+				    <p>Title: <b>${course.title}</b></p>
+				    <p>Lector's score: <span class="${userMark(course.score, gradation)}">${upFirst(userMark(course.score, gradation))}</span></p>
+				    <p>Lector: <span class="${course.lector}">${course.lector}</span></p>
+				</div>
+				`)
+			})
+		return `<div class="user__courses admin--info">${adminCourses.join('')}</div>`
+	}
+}
+
+// Выводим все на страницу
+let createUsers = (users) => {
+	const allUsers = [];
+	users
+		.map(function(user) {
+			if (user.role === "student") return new Student(user);
+			if (user.role === "lector") return new Lector(user);
+			if (user.role === "admin") return new Admin(user);
+		})
+		.map(function(user) {
+			allUsers.push(user.render());
+		})
+		document.write(`<div class="users">${allUsers.join("")}</div>`);
+}
+createUsers(users);
 
 
 
