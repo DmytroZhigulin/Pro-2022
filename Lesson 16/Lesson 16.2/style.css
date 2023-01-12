@@ -1,0 +1,11 @@
+.wrap{
+    max-width: 400px;
+    margin: 0 auto;
+}
+.cell {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+
