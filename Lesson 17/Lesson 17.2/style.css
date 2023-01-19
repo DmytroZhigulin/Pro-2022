@@ -1,3 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.wrap {
+    padding-top: 15px;
+    width: 90%;
+    margin: 0 auto; 
+}
+.figure-wrap{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+}
+.options {
+    max-width: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+}
 
+#square {
+    width: 120px;
+    height: 120px;
+    background: #f447ff;
+}
+
+#rectangle {
+    width: 220px;
+    height: 120px;
+    background: #4da1f7;
+}
+
+#circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #acef04;
+    
+}
 
 
