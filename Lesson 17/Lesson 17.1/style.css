@@ -1,0 +1,29 @@
+.link__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.first__link,
+.sec__link{
+    margin-top: 10px;
+    max-width: 350px;
+}
+
+.first__link input,
+.sec__link input,
+button{
+    padding: 10px 25px;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 25px;
+}
+
+button{
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
