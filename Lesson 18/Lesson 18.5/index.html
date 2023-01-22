@@ -4,9 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Lesson 18.5</title>
 </head>
 <body>
-    
+    <div class="container">
+        <form id="form">
+            <div class="main__info">
+                <label for="get-name">Name:</label>
+                <input type="text" name="name" id="get-name">
+
+                <label for="get-surname">Surname:</label>
+                <input type="text" name="name" id="get-surname">
+
+                <label for="get-adress">Adress:</label>
+                <input type="text" name="name" id="get-adress">
+            </div>
+            
+            <div class="additional__info">
+
+                <div class="gender__info">
+                    <input type="radio" id="gender"
+                    name="gender" value="Male">
+                    <label for="Чоловік">Male</label>
+
+                    <input type="radio" id="gender"
+                    name="gender" value="Female">
+                    <label for="Чоловік">Female</label>
+                </div>
+                
+                <div class="city__info">
+                    <select name="city__choose" id="city">
+                        <option value="Kyiv">Kyiv</option>
+                        <option value="Lviv">Lviv</option>
+                        <option value="Odesa">Odesa</option>
+                        <option value="Cherson">Cherson</option>
+                        <option value="Mykolaiv">Mykolaiv</option>
+                        <option value="Uzhorod">Uzhorod</option>
+                    </select>
+                </div>
+                
+                <div class="language__info">
+                    <input type="checkbox" id="language"
+                    name="language" value="English">
+                    <label for="English">English</label>
+
+                    <input type="checkbox" id="language"
+                    name="language" value="Poland">
+                    <label for="Poland">Poland</label>
+
+                    <input type="checkbox" id="language"
+                    name="language" value="Deusch">
+                    <label for="Deutsch">Deusch</label>
+
+                    <input type="checkbox" id="language"
+                    name="language" value="France">
+                    <label for="France">France</label>
+                </div>
+                
+            </div>
+            <button id="form__button">Save</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
