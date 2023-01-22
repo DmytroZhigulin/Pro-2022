@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+.body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+form {
+    margin: 50px 40px;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+.main__info,
+.additional__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__info,
+.additional__info {
+    padding-bottom: 30px;
+}
+.language__info {
+    max-width: 200px;
+}
+.gender__info,
+.city__info{
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 25px;
+    width: 120px;
+    margin: 0 auto;
+}
