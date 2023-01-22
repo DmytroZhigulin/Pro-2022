@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.card__wrap{
+    margin: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card{
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.emoji{
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.first{
+    background-image: url('images/smile.png');   
+}
+.sec{
+    background-image: url('images/think.png');   
+}
+.third{
+    background-image: url('images/hugs.png');   
+}
+.four{
+    background-image: url('images/crazy.png');   
+}
+.five{
+    background-image: url('images/cool.png');   
+}
