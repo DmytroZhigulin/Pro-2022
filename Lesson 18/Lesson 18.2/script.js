@@ -101,14 +101,24 @@ const cars = [
     },
 ];
 
+function reload() {
+    window.location.reload();
+}
+
 let container = document.querySelector('.container');
+
 
 function getCars(cars, mainWrap) {
     let markWrap = document.createElement('div');
     markWrap.classList.add('cards__wrap');
     mainWrap.append(markWrap);
 
-    cars.forEach(element => {
+
+    let modelWrap = document.createElement('div');
+    modelWrap.classList.add('models__wrap');
+    mainWrap.append(modelWrap);
+
+    cars.forEach(element => { 
         let markCard = document.createElement('div');
         let markImg = document.createElement('img');
         let markTitle = document.createElement('p');
@@ -124,79 +134,70 @@ function getCars(cars, mainWrap) {
 
         markCard.addEventListener('click', (e) => {
             e.preventDefault();
-            getModels(element.models, container);
+            getModels(element.models, modelWrap);
         });
-        
-
-        console.log(element);
     });
 }
 getCars(cars, container);
 
 
-function getModels(models, mainWrap) {
+function getModels(models, modelWrap) {
 
-    let modelWrap = document.createElement('div');
-    modelWrap.classList.add('models__wrap');
-    mainWrap.append(modelWrap);
-
+    modelWrap.innerHTML = '';
     models.forEach(element => {
         let modelCard = document.createElement('div');
         let modelPreviev = document.createElement('div');
         let modelImg = document.createElement('img');
         let modelTitle = document.createElement('p');
+        let modelDescr = document.createElement('div');
+    
+    
         
         modelImg.setAttribute('src', `${element.img}`);
         modelImg.setAttribute('alt', `${element.model}`);
         modelTitle.innerText = element.model;
+        modelDescr.classList.add('model__descr');
     
         modelCard.classList.add('model__card');
         modelPreviev.classList.add('model__preview');
-        
+
+        modelWrap.append(modelCard);
         modelCard.append(modelPreviev);
         modelPreviev.append(modelImg);
         modelPreviev.append(modelTitle);
-        modelWrap.append(modelCard);
-        console.log(element);
-
+        modelCard.append(modelDescr);
+        
         modelCard.addEventListener('click', (e) => {
             e.preventDefault();
-            getCarInfo(modelCard, element);
-            
+            modelDescr.innerHTML = '';
+            getCarInfo(modelCard, modelDescr, element);
             
         });
-
-        
     });
-    
 }
 
-function getCarInfo(card, carInfo) {
+function getCarInfo(card, descrField, carInfo) {
 
-    let modelDescr = document.createElement('div');
-            modelDescr.classList.add('model__descr');
-            card.append(modelDescr);
-            card.style.width = 350 + 'px';
+    card.style.width = 350 + 'px';
+    let keys = Object.keys(carInfo);
+    
+    for (let i = 0, l = keys.length; i < l; i++) {
 
-            let keys = Object.keys(carInfo);
-
-            for (let i = 0, l = keys.length; i < l; i++) {
-
-                if(keys[i] !== 'img' && keys[i] !== 'model') {
-
-                    let modelDescrField = document.createElement('p');
-                    modelDescr.append(modelDescrField);
-                    modelDescrField.innerHTML = `${keys[i]}: ${carInfo[keys[i]]}`;
-                    console.log(keys[i]);
-
-                }
-            }
-
-            let modelBuyButton = document.createElement('button');
-            modelBuyButton.classList.add('model__buy');
-            modelBuyButton.innerText = 'Buy car';
-            modelDescr.append(modelBuyButton);
-
-            modelBuyButton.addEventListener('click', () => window.location.reload());
+        if(keys[i] !== 'img' && keys[i] !== 'model') {
             
+            let modelDescrField = document.createElement('p');
+            descrField.append(modelDescrField);
+            modelDescrField.innerHTML = `${keys[i]}: ${carInfo[keys[i]]}`;
+        }
+    }
+
+    let modelBuyButton = document.createElement('button');
+    modelBuyButton.classList.add('model__buy');
+    modelBuyButton.innerText = 'Buy car';
+    descrField.append(modelBuyButton);
+
+    modelBuyButton.addEventListener('click', () => {
+        alert('Tanks');
+        setTimeout(reload, 2000);
+    });       
 }
