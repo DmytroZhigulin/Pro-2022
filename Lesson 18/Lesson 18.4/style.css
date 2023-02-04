@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+   display: flex;
+}  
+.cards__wrap {
+    margin: 20px 40px;
+}
+.card {
+    padding: 15px 25px;
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.card img {
+    height: 80px;
+}
+.card p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.model__card {
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 15px 0;
+}
+.model__card img{
+    max-width: 150px;
+}
+.model__card p{
+    font-weight: 600;
+    text-align: center;
+}
+.model__descr {
+    width: 60%;
+    margin-left: 40px;
+}
+.model__descr p{
+    text-align: left;
+    margin-bottom: 5px;
+}
+.model__buy {
+    background-color: blanchedalmond;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.validationForm {
+    width: 400px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+form div{
+    margin: 5px 0px;
+}
+label{
+    margin-right: 20px;
+}
+.payment__info label{
+    margin-right: 5px;
+}
+.payment__info input{
+    margin-right: 15px;
+}
+.comment__info{
+    display: flex;
+}
+.confirmBtn{
+    width: 100px;
+    padding: 8px 15px;
+}
+.error{
+    border: 1px solid red;
+}
+table{
+    margin: 40px 20px;
+}
+
