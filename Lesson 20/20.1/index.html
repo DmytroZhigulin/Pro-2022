@@ -5,8 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson 20.1</title>
+    <style>
+        .container{
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .coment__wrap{
+            margin-bottom: 12px;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+        button{
+            margin-top: 15px;
+            width: 100px;
+        }
+        .keys__wrap{
+            padding: 5px 15px;
+        }
+        .keys__wrap h5{
+            margin: 0 0 5px;
+        }
+        .keys__wrap p{
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <form class="form">
+            <label for="">
+                <input type="number" name="findId" value="0">
+                Enter id
+            </label>
+            <button>Find post</button>
+        </form>
+    </div>
    
     <script src="script.js"></script>
 </body>
