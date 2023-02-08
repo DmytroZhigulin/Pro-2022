@@ -2,26 +2,19 @@
 // Ід має бути введений в інпут (валідація: ід від 1 до 100) Якщо знайдено пост, то вивести на сторінку блок з постом і зробити кнопку для отримання комкоментарів до посту.
 // Зробити завдання використовуючи проміси, перехопити помилки.
 // const API = "https://jsonplaceholder.typicode.com"
-const API = "https://jsonplaceholder.typicode.com"
+const API = "https://jsonplaceholder.typicode.com";
+const controller = action => fetch(action)
+      .then(data => {
+            if (data.status >= 200 && data.status < 400) {
+            return Promise.resolve(data.json());
+            }
+      return err;
+      })
+      .catch(err => alert('There is no id'));
 const form = document.querySelector('.form');
 const container = document.querySelector('.container');
 
-let parse = response => JSON.parse(response);
 
-const controller = (method, action) => {
-    const xml = new XMLHttpRequest();
-    xml.open(method, action);
-    xml.send();
-
-    return new Promise((resolve, reject) => {
-        xml.addEventListener("readystatechange", () => {
-            if(xml.readyState === 4) {
-                xml.status >= 200 && xml.status < 400
-                    ? resolve(parse(xml.response)) : reject(alert('There is no post with this id!'));
-            }
-        })
-    });
-}
 
 form.addEventListener('submit', e => {
       e.preventDefault();
@@ -29,14 +22,16 @@ form.addEventListener('submit', e => {
       let inputValue = form.querySelector('input[name=findId]').value;
       if(inputValue > 0 && inputValue <= 100) {
 
-            controller("GET", `${API}/posts/${inputValue}`)
+            controller(`${API}/posts/${inputValue}`)
                   .then(
                         data => {
                               createInfo(data, container);
                               showCommentsToPost(inputValue);
                         });    
-      } else {
-            controller("GET", `${API}/posts/${inputValue}`).catch(err => err);;
+      } 
+      else {
+            controller(`${API}/posts/${inputValue}`)
+                  .catch(err => alert('There is no id'));
       }
       
 })  
@@ -57,7 +52,7 @@ function showCommentsToPost(value) {
       button.addEventListener('click', e => {
             e.preventDefault();
             
-            controller("GET", `${API}/posts/${value}/comments`)
+            controller(`${API}/posts/${value}/comments`)
                   .then(data => data.forEach(element => showComents(element, container)));    
       }) 
 }
