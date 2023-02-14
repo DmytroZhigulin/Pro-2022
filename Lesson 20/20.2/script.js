@@ -111,6 +111,11 @@ getMoney(userData, bankData)
             else {
                 alert(`Вот Ваши денежки: ${sum} ${currency} ${bankData[currency].img}`);
             }
-        }
+            return Promise.reject(sum);
+        } 
+    )
+    .then(
+        () => {},
+        () => {}
     )
     .finally(() => console.log('Спасибо, хорошего дня 😊'));
