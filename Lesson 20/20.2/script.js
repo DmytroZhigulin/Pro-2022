@@ -51,7 +51,6 @@ function getBankСurrency(data) {
             bankСurrency.push(currency);
         }
     }
-    
     return bankСurrency;
 }
 
