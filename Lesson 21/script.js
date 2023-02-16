@@ -18,7 +18,8 @@ button.addEventListener("click", (e) => {
     e.preventDefault();
 
     const login = document.querySelector("input");
-    controller(`https://api.github.com/users/${login.value}`, `${login.value}`);
+    let userId = login.value;
+    controller(`https://api.github.com/users/${userId}`, `${userId}`);
 });
 
 async function controller(action, login) {
