@@ -26,7 +26,7 @@ async function controller(action, login) {
         const response = await fetch(action);
 		if(response.ok) {
 			const data = await response.json();
-            console.log(data);
+            //console.log(data);
             renderUserCard(data);
             
 		} else {
