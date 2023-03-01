@@ -6,12 +6,15 @@
 
 // 3) каждая функция действия (add, sub, div, mult) должна быть в отдельном файле
 
-const calculator = require('./calculator');
+import add from "./calculator/add.js";
+import sub from "./calculator/sub.js";
+import mult from "./calculator/mult.js";
+import div from "./calculator/div.js";
 
-console.log(calculator.add(10, 2)); // 12
-console.log(calculator.sub(12, 5)); // 7
-console.log(calculator.mult(7, 4)); // 28
-console.log(calculator.div(28, 2)); // 14
+console.log(add(10, 2)); // 12
+console.log(sub(12, 5)); // 7
+console.log(mult(7, 4)); // 28
+console.log(div(28, 2)); // 14
 
 
 
