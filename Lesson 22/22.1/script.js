@@ -16,6 +16,8 @@ console.log(sub(12, 5)); // 7
 console.log(mult(7, 4)); // 28
 console.log(div(28, 2)); // 14
 
+console.log(calc);
+
 
 
 
