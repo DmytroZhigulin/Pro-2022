@@ -1,159 +1,121 @@
 import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import { 
+  styled, 
+  Box, 
+  Toolbar, 
+  IconButton, 
+  InputBase,
+  Button,
+  Typography
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import AddIcon from '@mui/icons-material/Add';
+import SideMenu from './SideBar';
 
-const pages = ['Home', 'Qizes', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const HeadNav = styled(Box)(() => ({
+  position: 'fixed',
+  width: '100%',
+  backgroundColor: 'transparent',
+  '& @media(max-width: 460px)': {
+    padding: '0px'
+  },
+}));
 
-export default function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+const Search = styled('div')(() => ({
+  position: 'relative',
+  backgroundColor: 'rgba(0, 139, 240, 0.2)',
+  borderRadius: '15px',
+  transition: '0.5s',
+  '&:hover': {
+    backgroundColor: 'rgba(0, 139, 240, 0.4)',
+    boxShadow: '3px 3px 20px -7px rgba(0,0,0,0.75)',
+  },
+}));
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+const SearchIconWrapper = styled('div')(() => ({
+  padding: '0px 5px 0px 5px',
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#ffffff',
+}));
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+const StyledInputBase = styled(InputBase)(() => ({
+  color: '#ffffff',
+  paddingLeft: '30px',
+}));
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+const ToggleButton = styled(MenuIcon)(() => ({
+  color: '#ffffff',
+}));
+
+const AddQuizButton = styled(Button)(() => ({
+  color: '#ffffff',
+  backgroundColor: 'rgba(234, 91, 212, 0.4)',
+  borderRadius: '15px',
+  padding: '5px 15px 5px 10px',
+  transition: '0.5s',
+  '&:hover': {
+    backgroundColor: 'rgba(234, 91, 212, 0.6)',
+    boxShadow: '3px 3px 20px -7px rgba(0,0,0,0.75)',
+  },
+}));
+
+const AddQuizWrap = styled(Box)(() => ({
+  flexGrow: '1',
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginRight: '1%',
+}));
+
+export default function PrimarySearchAppBar() {
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
 
   return (
-    <AppBar position="absolute">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+    <Box sx={{ flexGrow: 1 }}>
+      <HeadNav>
+        <Toolbar>
+          <IconButton
+            onClick={() => handleDrawerOpen(true)}
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
           >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+            <ToggleButton/>
+          </IconButton>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+          <AddQuizWrap>
+            <AddQuizButton size="big" >
+              <AddIcon/>
+              <Typography>
+                Add quiz
+              </Typography>
+            </AddQuizButton>
+          </AddQuizWrap>  
         </Toolbar>
-      </Container>
-    </AppBar>
+      </HeadNav>
+      <SideMenu
+        open={open} 
+        handleClose={handleDrawerClose} 
+        onClick={handleDrawerOpen}
+      />
+    </Box>
   );
 }

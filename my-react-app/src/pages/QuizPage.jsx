@@ -27,7 +27,7 @@ export default function UsersList() {
             height: '100vh',
             paddingTop: '150px',
             justifyContent: 'center',
-            backgroundColor: '#1C0772',
+            backgroundImage: 'linear-gradient(to right bottom, #726cf8, #9a67f2, #ba63e9, #d45edf, #ea5bd4)',
             
         }}>
         {courses.map((course, index) => (

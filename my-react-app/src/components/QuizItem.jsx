@@ -28,11 +28,6 @@ const CardButtons = styled(Box)(() => ({
 
 export default function QuizItem({ course, id, descr, img }) {
 
-  const [isHover, setIsHover] = useState(false);
-
-  const handleMouseEnter = () => setIsHover(true);
-  const handleMouseLeave = () => setIsHover(false);
-
   const [modalOpen, setModalOpen] = useState(false);
   
   const handleModalOpen = () => setModalOpen(true);
@@ -45,7 +40,7 @@ export default function QuizItem({ course, id, descr, img }) {
      fontSize: '30px',
      borderRadius: '20px',
      cursor: 'pointer',
-     backgroundColor: isHover ? '#0407b3' : '#02049c',
+     backgroundColor: '#ffffff',
      color: '#ffffff',
      padding: '15px',
      transition: '0.5s',
@@ -56,8 +51,6 @@ export default function QuizItem({ course, id, descr, img }) {
         <Card 
           sx={{ maxWidth: 345 }} 
           style={boxStyle} 
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           <CourceIcon>
             <Avatar
@@ -70,7 +63,7 @@ export default function QuizItem({ course, id, descr, img }) {
             <Typography gutterBottom variant="h5" component="div">
               {course}
             </Typography>
-            <Typography variant="body2" color="#ffffff">
+            <Typography variant="body2" color="#000000">
               {descr}
             </Typography>
           </CardContent>
