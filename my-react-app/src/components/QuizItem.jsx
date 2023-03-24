@@ -1,89 +1,142 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { 
-    styled,
-    Box,
-    Typography,
-    CardContent,
-    Avatar,
-    Card,
-} from "@mui/material";
-import QuizModal from './Modals/QuizModal';
-import StartModal from './Modals/StartModal';
+  styled,
+  Card,  
+  CardMedia,  
+  CardContent,  
+  CardActions,   
+  IconButton,  
+  Typography, 
+} from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import InfoModal from '../components/Modals/InfoModal';
+import StartModal from '../components/Modals/StartModal';
 
+const QuizCard = styled(Card)(() => ({
+  maxWidth: '380px',
+  margin: '15px 20px',
+  fontSize: '30px',
+  borderRadius: '20px',
+  cursor: 'pointer',
+  backgroundColor: '#ffffff',
+  color: '#ffffff',
+  padding: '15px',
+  transition: '0.5s',
+  height: 'fit-content',
+}));
 
-const CourceIcon = styled(Box)(() => ({
-  width: '50px',
-  height: '50px',
+const QuizCardHead = styled('div')(() => ({
+  display: 'flex',
+  marginBottom: '10px',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+}));
+
+const QuizCardTitle = styled('div')(() => ({
+  color: '#008EC9',
+  fontSize: '20px',
+  fontWeight: 'bold',
+}));
+
+const QuizAvatar = styled(CardMedia)(() => ({
+  width: '45px',
+  height: '45px',
   borderRadius: '50%',
   display: 'block',
 }));
 
-const CardButtons = styled(Box)(() => ({
+const QuizCardDescr = styled(Typography)(() => ({
+  color: '#484554',
+  fontSize: '16px',
+  textAlign: 'center',
+}));
+
+const IconsWrapper = styled(CardActions)(() => ({
   display: 'flex',
-  margin: '0 10px',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   alignItems: 'center',
 }));
 
+const LeftIcons = styled('div')(() => ({
+  display: 'block',
+}));
 
-export default function QuizItem({ course, id, descr, img }) {
+const RightIcons = styled('div')(() => ({
+  display: 'block',
+}));
 
-  const [modalOpen, setModalOpen] = useState(false);
-  
-  const handleModalOpen = () => setModalOpen(true);
-  const handleClose = () => setModalOpen(false);
+export default function QuizItem({ course, id, descr, img, baner, about }) {
+  const [openInfo, setInfoModalOpen] = useState(false);
+  const [openQuiz, setQuizModalOpen] = useState(false);
 
-
-  const boxStyle = {
-     maxWidth: '380px',
-     margin: '0 20px',
-     fontSize: '30px',
-     borderRadius: '20px',
-     cursor: 'pointer',
-     backgroundColor: '#ffffff',
-     color: '#ffffff',
-     padding: '15px',
-     transition: '0.5s',
-  };
-
-    return (
-      <div>
-        <Card 
-          sx={{ maxWidth: 345 }} 
-          style={boxStyle} 
-        >
-          <CourceIcon>
-            <Avatar
-              alt={course}
-              src={img}
-              sx={{ width: 56, height: 56 }}
-            />
-          </CourceIcon>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {course}
-            </Typography>
-            <Typography variant="body2" color="#000000">
-              {descr}
-            </Typography>
-          </CardContent>
-          <CardButtons>
-            <QuizModal 
-              open={modalOpen} 
-              handleClose={handleClose} 
-              onClick={handleModalOpen}
-              course={course} 
-              descr={descr}
-            />
-            <StartModal 
-              open={modalOpen} 
-              handleClose={handleClose} 
-              onClick={handleModalOpen}
-              course={course} 
-            />
-          </CardButtons>
-        </Card>
-        
-      </div>
-      );;
+  return (
+    <>
+      <QuizCard sx={{ maxWidth: 345 }}>
+        <QuizCardHead>
+          <QuizAvatar
+            component="img"
+            image={img}
+            alt={course}
+          />
+          <QuizCardTitle>
+            {course} quiz
+          </QuizCardTitle>
+        </QuizCardHead>
+        <CardMedia
+          component="img"
+          height="194"
+          image={baner}
+          alt={course}
+        />
+        <CardContent>
+          <QuizCardDescr>
+            {descr}
+          </QuizCardDescr>
+        </CardContent>
+        <IconsWrapper disableSpacing>
+          <LeftIcons>
+            <IconButton 
+              aria-label="add to favorites"
+            >
+              <FavoriteIcon sx={{ color:'#484554' }}/>
+            </IconButton>
+            <IconButton 
+              aria-label="info"
+              onClick={() => setInfoModalOpen(true)}
+              >
+                
+              <InfoOutlinedIcon sx={{ color:'#FF9372' }}/>
+            </IconButton>
+          </LeftIcons>
+          <RightIcons>
+            <IconButton 
+              aria-label="start quiz"
+              onClick={() => setQuizModalOpen(true)}
+            >
+              
+              <PlayCircleOutlineIcon sx={{ color:'#008761', fontSize: '30px' }}/>
+            </IconButton>
+          </RightIcons>
+          
+          
+          
+        </IconsWrapper>
+      </QuizCard>
+      <StartModal 
+        open={openQuiz}
+        onClose={() => setQuizModalOpen(false)}
+        course={course}
+      />
+      <InfoModal
+        open={openInfo}
+        onClose={() => setInfoModalOpen(false)}
+        course={course}
+        about={about}
+        baner={baner}
+      />
+      
+    </>
+  );
 }

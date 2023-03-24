@@ -14,6 +14,7 @@ export default function UsersList() {
         (async () => {
             const { data } = await axios.get("https://63f9f88abeec322c57eae484.mockapi.io/Courses");
             setCourses(data);
+            console.log(data);
         })();
     }, []);
 
@@ -24,8 +25,8 @@ export default function UsersList() {
       <Grid container 
         spacing={1}
         sx={{ 
-            height: '100vh',
-            paddingTop: '150px',
+            minHeight: '100vh',
+            paddingTop: '110px',
             justifyContent: 'center',
             backgroundImage: 'linear-gradient(to right bottom, #726cf8, #9a67f2, #ba63e9, #d45edf, #ea5bd4)',
             
@@ -36,7 +37,9 @@ export default function UsersList() {
                     key={index}
                     course={course.course}
                     descr={course.description}
+                    about={course.about}
                     img={course.avatar}
+                    baner={course.baner}
                     id={index}
                     margin='20px'
                 />

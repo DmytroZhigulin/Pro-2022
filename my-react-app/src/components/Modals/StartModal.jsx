@@ -1,37 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Backdrop, 
   Box, 
   Modal, 
   Fade, 
-  Button,
-  Typography } from '@mui/material';
+  Typography,
+  styled,
+} from '@mui/material';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+  const ModalWindow = styled(Box)(() => ({
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    backgroundColor: '#ffffff',
+    boxShadow: 24,
+    padding: '20px 30px',
+    borderRadius: '15px',
+  }));
 
-export default function StartModal({ course }) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false); 
+export default function StartModal({ course, open, onClose }) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Start Quiz</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
         slotProps={{
@@ -41,11 +38,11 @@ export default function StartModal({ course }) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <ModalWindow>
             <Typography id="transition-modal-title" variant="h6" component="h2">
               You started {course} quiz
             </Typography>
-          </Box>
+          </ModalWindow>
         </Fade>
       </Modal>
     </div>

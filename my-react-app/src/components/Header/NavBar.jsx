@@ -92,15 +92,15 @@ export default function PrimarySearchAppBar() {
           >
             <ToggleButton/>
           </IconButton>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+    <Search>
+        <SearchIconWrapper>
+            <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+        />
+    </Search> 
           <AddQuizWrap>
             <AddQuizButton size="big" >
               <AddIcon/>

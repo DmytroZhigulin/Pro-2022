@@ -1,16 +1,17 @@
 import React from 'react';
 import { 
-  styled, 
-  Box, 
+  styled,  
   IconButton, 
 } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TelegramIcon from '@mui/icons-material/Telegram';
 
-const Foo = styled(Box)(() => ({
+const Foo = styled('div')(() => ({
   backgroundImage: 'linear-gradient(to left bottom, #ea5bd4, #d45edf, #ba63e9, #9a67f2, #726cf8)',
   padding: '20px 0px',
+  display: 'flex',
+  justifyContent: 'center',
 }));
 
 const Instagram = styled(InstagramIcon)(() => ({
@@ -50,9 +51,6 @@ export default function MainFooter() {
       <IconButton size="medium">
         <Telegram/>
       </IconButton>
-      
-      
-      
     </Foo>
   );
 }
